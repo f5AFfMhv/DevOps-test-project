@@ -2,29 +2,30 @@
 
 """This application is purely made for learning purposes"""
 
+import os
 from flask import Flask, render_template, request, redirect
 import redis
-import os
 
 # Try to read application parameters from environment
 try:
     REDIS_HOST = os.environ['REDIS_HOST']
-except:
+except LookupError:
     REDIS_HOST = "localhost"
 
+# REDIS_PORT = os.environ['REDIS_PORT']
 try:
     REDIS_PORT = os.environ['REDIS_PORT']
-except:
+except LookupError:
     REDIS_PORT = 6379
 
 try:
     BIND_ADDR = os.environ['BIND_ADDR']
-except:
+except LookupError:
     BIND_ADDR = '0.0.0.0'
 
 try:
     BIND_PORT = os.environ['BIND_PORT']
-except:
+except LookupError:
     BIND_PORT = 5000
 
 # Create redis connection and initialize flask

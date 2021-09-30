@@ -1,3 +1,5 @@
+![example workflow](https://github.com/f5AFfMhv/DevOps-test-project/actions/workflows/pylint.yml/badge.svg)
+
 ## Context
 This projects purpose is to learn following technologies:
 * Docker
