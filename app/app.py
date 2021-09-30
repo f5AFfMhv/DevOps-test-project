@@ -32,29 +32,29 @@ except LookupError:
 r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 app = Flask(__name__)
 
-# Render main page
 @app.route('/', methods=['GET'])
 def render_page():
+    """Render main page"""
     # Get all keys from redis
     key_array = r.keys("*")
     decoded_keys = []
     decoded_values =[]
     # For every key from redis
-    for x in key_array:
+    for key in key_array:
         # Convert key from binary data to text
-        tmp = x.decode("utf-8")
+        tmp = key.decode("utf-8")
         # Append key to list
         decoded_keys.append(tmp)
         # Convert current keys value to text and append it to a list
         decoded_values.append(r.get(tmp).decode("utf-8"))
     # Form a dictionary with key:value pairs
-    results = {decoded_keys[i]: decoded_values[i] for i in range(len(decoded_keys))}
+    results = {decoded_keys[idx]: decoded_values[i] for idx in range(len(decoded_keys))}
     # Render template with results
     return render_template('index.html', res=results)
 
-# Function for adding new key:value pair to redis
 @app.route('/add', methods=['GET'])
 def add_value():
+    """Function for adding new key:value pair to redis"""
     # Get key and value from request URL arguments
     key = request.args.get('key')
     value = request.args.get('value')
