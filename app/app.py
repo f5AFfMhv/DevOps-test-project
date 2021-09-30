@@ -48,7 +48,7 @@ def render_page():
         # Convert current keys value to text and append it to a list
         decoded_values.append(r.get(tmp).decode("utf-8"))
     # Form a dictionary with key:value pairs
-    results = {decoded_keys[idx]: decoded_values[i] for idx in range(len(decoded_keys))}
+    results = {decoded_keys[idx]: decoded_values[idx] for idx in range(len(decoded_keys))}
     # Render template with results
     return render_template('index.html', res=results)
 
@@ -61,7 +61,7 @@ def add_value():
     # Add key:value to redis
     r.mset({key: value})
     # Redirect to main page to show results
-    return redirect(f"/")
+    return redirect("/")
 
 # Run flask application
 app.run(host=BIND_ADDR, port=BIND_PORT)
