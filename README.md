@@ -1,4 +1,4 @@
-![example workflow](https://github.com/f5AFfMhv/DevOps-test-project/actions/workflows/pylint.yml/badge.svg)
+[![CI](https://github.com/f5AFfMhv/DevOps-test-project/actions/workflows/CI.yml/badge.svg)](https://github.com/f5AFfMhv/DevOps-test-project/actions/workflows/CI.yml)
 
 ## Context
 This projects purpose is to learn following technologies:
