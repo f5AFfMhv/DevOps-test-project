@@ -2,7 +2,9 @@ FROM python:3.8-slim AS build-env
 # metadata
 LABEL dockerfile.version="2"
 LABEL software="DevOps-test-app"
-LABEL software.version="1"
+LABEL version="1.1"
+LABEL major="1"
+LABEL minor="1"
 LABEL maintainer="Martynas J."
 
 COPY requirements.txt /requirements.txt
