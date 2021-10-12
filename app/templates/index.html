@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <head>
-    <title>Hello World!</title>
+    <title>Test App</title>
 </head>
 <body>
+    <p>Redis Host: {{ redis_host }}</p>
+    <p>Redis Port: {{ redis_port }}</p>
     <h1>Add new value to Redis</h1>
     <form action="/add">
         <input placeholder="key" type="text" name="key">

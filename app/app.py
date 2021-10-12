@@ -50,7 +50,7 @@ def render_page():
     # Form a dictionary with key:value pairs
     results = {decoded_keys[idx]: decoded_values[idx] for idx in range(len(decoded_keys))}
     # Render template with results
-    return render_template('index.html', res=results)
+    return render_template('index.html', res=results, redis_host=REDIS_HOST, redis_port=REDIS_PORT)
 
 @app.route('/add', methods=['GET'])
 def add_value():
