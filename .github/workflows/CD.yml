@@ -1,10 +1,9 @@
 name: CD
 
 on:
-  pull_request:
-    branches: 
-      - master
-  types: [closed]
+  release:
+    types:
+      - created
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
