@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: f5affmhv/devops-test-app:sha-5b9f1a8
+          image: f5affmhv/devops-test-app:master
           ports:
             - containerPort: 5000
           env:

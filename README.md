@@ -14,7 +14,7 @@ User can put data to input fields and add them to redis key storage.
 All keys and values stored in redis is displayed in application.
 
 ## CI pipeline
-Pipeline is made with `GitHubs Actions`.  
+Pipeline is made with `GitHub Actions`.  
 Job is triggered by push event. Application syntax is checked with `pylint`. Docker image is build and pushed to docker registry.
 
 ## Docker Compose
