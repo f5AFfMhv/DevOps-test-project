@@ -1,4 +1,5 @@
 [![CI](https://github.com/f5AFfMhv/DevOps-test-project/actions/workflows/CI.yml/badge.svg)](https://github.com/f5AFfMhv/DevOps-test-project/actions/workflows/CI.yml)
+[![CD](https://github.com/f5AFfMhv/DevOps-test-project/actions/workflows/CD.yml/badge.svg?branch=master)](https://github.com/f5AFfMhv/DevOps-test-project/actions/workflows/CD.yml)
 
 ## Context
 This projects purpose is to learn following technologies:
