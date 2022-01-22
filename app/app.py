@@ -4,6 +4,7 @@
 
 import os
 from flask import Flask, render_template, request, redirect
+from prometheus_flask_exporter import PrometheusMetrics
 import redis
 
 # Try to read application parameters from environment
@@ -12,25 +13,25 @@ try:
 except LookupError:
     REDIS_HOST = "localhost"
 
-# REDIS_PORT = os.environ['REDIS_PORT']
 try:
     REDIS_PORT = os.environ['REDIS_PORT']
 except LookupError:
     REDIS_PORT = 6379
 
 try:
-    BIND_ADDR = os.environ['BIND_ADDR']
+    FLASK_ENV = os.environ['FLASK_ENV']
 except LookupError:
-    BIND_ADDR = '0.0.0.0'
+    FLASK_ENV = "Not set"
 
 try:
-    BIND_PORT = os.environ['BIND_PORT']
+    APP_VERS = os.environ['APP_VERS']
 except LookupError:
-    BIND_PORT = 5000
+    APP_VERS = "Not set"
 
 # Create redis connection and initialize flask
 r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 @app.route('/', methods=['GET'])
 def render_page():
@@ -50,7 +51,7 @@ def render_page():
     # Form a dictionary with key:value pairs
     results = {decoded_keys[idx]: decoded_values[idx] for idx in range(len(decoded_keys))}
     # Render template with results
-    return render_template('index.html', res=results, redis_host=REDIS_HOST, redis_port=REDIS_PORT)
+    return render_template('index.html', res=results, redis_host=REDIS_HOST, redis_port=REDIS_PORT, flask_env=FLASK_ENV, app_vers=APP_VERS)
 
 @app.route('/add', methods=['GET'])
 def add_value():
@@ -63,5 +64,8 @@ def add_value():
     # Redirect to main page to show results
     return redirect("/")
 
-# Run flask application
-app.run(host=BIND_ADDR, port=BIND_PORT)
+@app.route('/dashboard/flask', methods=['GET'])
+def flask_dashboard():
+    """Function for redirecting to grafana flask dashboard"""
+    # Redirect to flask_dashboard
+    return redirect("/grafana/d/flask_dashboard/")

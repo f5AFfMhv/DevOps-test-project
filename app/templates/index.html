@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <title>Test App v1</title>
+    <title>Test App</title>
 </head>
 <body>
-    <p>Redis Host: {{ redis_host }}</p>
-    <p>Redis Port: {{ redis_port }}</p>
     <h1>Add new value to Redis</h1>
     <form action="/add">
         <input placeholder="key" type="text" name="key">
@@ -25,6 +23,16 @@
         </tr>
         {% endfor %}
       </table>
-      <p>Added in <b>feature1</b> branch</p>
+      <br><hr>
+      <h2>Environment Variables:</h2>
+      <p>Redis Host: {{ redis_host }}</p>
+      <p>Redis Port: {{ redis_port }}</p>
+      <p>Flask Env: {{ flask_env }}</p>
+      <p>App version: {{ app_vers }}</p>
+      <br><hr>
+      <h2>Grafana:</h2>
+      <a href="./dashboard/flask">Flask Dashboard</a>
+      <h3>Inframe Panel</h3>
+      <iframe src="./grafana/d-solo/flask_dashboard/flask-application-dashboard?orgId=1&refresh=5s&theme=light&panelId=13" width="800" height="500" frameborder="0"></iframe>
 </body>
 </html>

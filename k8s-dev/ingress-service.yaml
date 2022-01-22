@@ -23,3 +23,13 @@ spec:
                 name: app-cluster-ip-service
                 port:
                   number: 5000
+          - path: /grafana?(.*)
+            # UPDATE PATH
+            pathType: Prefix
+            # ADD PATHTYPE
+            backend:
+              service:
+                # UPDATE SERVICE FIELDS
+                name: grafana-cluster-ip-service
+                port:
+                  number: 3000
