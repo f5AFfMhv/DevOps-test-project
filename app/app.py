@@ -67,5 +67,5 @@ def add_value():
 @app.route('/dashboard/flask', methods=['GET'])
 def flask_dashboard():
     """Function for redirecting to grafana flask dashboard"""
-    # Redirect to flask_dashboard
+    # Redirect to flask dashboard
     return redirect("/grafana/d/flask_dashboard/")
